@@ -1,0 +1,16 @@
+<a href="{% url 'polls:index' %}"> List of  encuestas</a>
+<h1>
+    {% if question %}
+        Change Encuesta {{ question.question_text }}
+    {% else %}
+        Agregar encuesta
+    {% endif %}
+</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+<input type="submit" value="Guardar">
+</form>
+
+
+
