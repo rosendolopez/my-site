@@ -13,6 +13,7 @@ import dj_database_url
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +28,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,23 +79,34 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 MAX_CONN_AGE = 600
 
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'dbh3km2i2o95ci',
+       'USER': '26e96e29c740b0b0e771600c38cc29a7931170aee3347c35b7b57a3177bfa156',
+       'PASSWORD': os.getenv('PASSWORD'),
+       'HOST': 'ec2-18-209-78-11.compute-1.amazonaws.com',
+       'PORT': '5432',
+    }
+}
+
 #DATABASES = {
- #   'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
- #       'NAME': os.getenv('NAME'),
- #       'USER': os.getenv('USER'),
-#        'PASSWORD': os.getenv('PASSWORD'),
-#        'HOST': os.getenv('HOST'),
- #       'PORT': os.getenv('PORT'),
+#  'default': {
+#       'ENGINE': 'django.db.backends.postgresql',
+#       'NAME': os.getenv('NAME'),
+#       'USER': os.getenv('USER'),
+#       'PASSWORD': os.getenv('PASSWORD'),
+#       'HOST': os.getenv('HOST'),
+#       'PORT': os.getenv('PORT'),
 #    }
 #}
 
